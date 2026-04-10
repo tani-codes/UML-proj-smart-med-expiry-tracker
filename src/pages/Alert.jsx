@@ -85,7 +85,7 @@ function AlertPage() {
             </div>
           </div>
 
-          <div className="alert-row-card soon-row mt-6">
+          <div className="alert-row-card soon-row">
             <div className="row-icon yellow-icon"><AlertTriangle size={22} /></div>
             <div className="row-text">
                <h4>Expiring Soon</h4>
@@ -93,7 +93,7 @@ function AlertPage() {
             </div>
           </div>
 
-          <div className="alert-row-card safe-row mt-6">
+          <div className="alert-row-card safe-row">
             <div className="row-icon green-icon"><ShieldCheck size={22} /></div>
             <div className="row-text">
                <h4>Safe Medicines</h4>
@@ -101,7 +101,7 @@ function AlertPage() {
             </div>
           </div>
 
-          <div className="alert-row-card default-row mt-6">
+          <div className="alert-row-card default-row">
             <div className="row-icon gray-icon"><Bell size={22} /></div>
             <div className="row-text">
                <h4>Recent Notifications</h4>
@@ -116,7 +116,7 @@ function AlertPage() {
             <h3>Notification Settings</h3>
             <p className="sidebar-subtitle">Choose how you want to be notified</p>
             
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon blue-bg"><Mail size={18} /></div>
                 <div>
@@ -127,7 +127,7 @@ function AlertPage() {
               <Toggle active={toggles.email} onClick={() => handleToggle('email')} />
             </div>
 
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon green-bg"><Smartphone size={18} /></div>
                 <div>
@@ -138,7 +138,7 @@ function AlertPage() {
               <Toggle active={toggles.push} onClick={() => handleToggle('push')} />
             </div>
 
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon purple-bg"><Bell size={18} /></div>
                 <div>
@@ -155,16 +155,16 @@ function AlertPage() {
             <h3>Alert Timing</h3>
             <p className="sidebar-subtitle">When to send expiry reminders</p>
             
-            <div className="timing-list mt-6">
-              <div className="timing-item mb-4">
+            <div className="timing-list mt-8">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 30 days before</div>
                 <Toggle active={toggles.days30} onClick={() => handleToggle('days30')} />
               </div>
-              <div className="timing-item mb-4">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 14 days before</div>
                 <Toggle active={toggles.days14} onClick={() => handleToggle('days14')} />
               </div>
-              <div className="timing-item mb-4">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 7 days before</div>
                 <Toggle active={toggles.days7} onClick={() => handleToggle('days7')} />
               </div>
