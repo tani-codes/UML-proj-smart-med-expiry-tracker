@@ -1,0 +1,141 @@
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1a2a3a;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-subtitle {
+  font-size: 1.1rem;
+  color: #5a6d80;
+}
+
+.add-med-btn-profile {
+  background: #97ccde !important;
+  color: #1a4252;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Banner Card */
+.banner-card {
+  background: rgba(151, 204, 222, 0.6) !important; /* Blue-ish background */
+  padding: 2.5rem;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.banner-card:hover {
+  background: rgba(151, 204, 222, 0.8) !important;
+  transform: translateY(-3px);
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.banner-icon {
+  background: rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.banner-text h3 {
+  font-size: 1.5rem;
+  color: #1a2a3a;
+  margin-bottom: 0.3rem;
+}
+
+.banner-text p {
+  color: #2b3d4f;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.banner-arrow {
+  color: #1a2a3a;
+  opacity: 0.7;
+}
+
+/* Stats Grid */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.stat-box {
+  padding: 2.5rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.stat-title {
+  font-size: 1.25rem;
+  color: #1a2a3a;
+}
+
+.stat-value {
+  font-size: 4rem;
+  font-weight: 400;
+  color: #1a2a3a;
+  margin: 1rem 0;
+}
+
+.stat-desc {
+  color: #5a6d80;
+  font-size: 1rem;
+}
+
+/* List Cards */
+.list-card {
+  padding: 2rem 2.5rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.list-card-content h3 {
+  font-size: 1.6rem;
+  color: #1a2a3a;
+  margin-bottom: 0.3rem;
+}
+
+.list-card-content p {
+  color: #5a6d80;
+  font-size: 1rem;
+}
+
+.btn-outline-list {
+  background: transparent;
+  border: 1px solid #7ab3cb;
+  color: #2b779a;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-outline-list:hover {
+  background: rgba(122, 179, 203, 0.1);
+}
+
+@media (max-width: 768px) {
+  .profile-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

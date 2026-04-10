@@ -1,0 +1,242 @@
+.scanner-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.scanner-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #2b3d4f;
+  margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+  color: #5a6d80;
+  font-size: 1.05rem;
+}
+
+.scanner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; /* Increased gap */
+}
+
+@media (max-width: 768px) {
+  .scanner-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.scan-card, .results-card {
+  padding: 2.5rem; /* Increased padding */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scan-card {
+  background: rgba(220, 245, 255, 0.4);
+  border: 1px solid rgba(255,255,255,0.9);
+}
+
+.results-card {
+  background: rgba(230, 245, 255, 0.3);
+  border: 1px solid rgba(255,255,255,0.7);
+}
+
+.card-title {
+  font-size: 1.6rem;
+  color: #2b3d4f;
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  color: #5a6d80;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.upload-area {
+  border: 2px dashed rgba(122, 179, 203, 0.3);
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  flex: 1;
+}
+
+.upload-icon {
+  margin-bottom: 1.5rem;
+}
+
+.upload-area h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2b3d4f;
+}
+
+.upload-area p {
+  color: #5a6d80;
+  font-size: 1rem;
+  max-width: 300px;
+  margin-bottom: 2rem;
+}
+
+.file-input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.choose-btn {
+  background: rgba(230, 235, 240, 1);
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  color: #2b3d4f;
+  border-right: 1px solid rgba(0,0,0,0.05);
+}
+
+.file-name {
+  padding: 0.6rem 1.2rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  text-align: left;
+}
+
+.start-scan-btn {
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: #7caec6 !important;
+  color: white;
+  border-radius: 15px;
+  margin-top: 2rem;
+}
+
+.start-scan-btn:hover {
+  background: #6a9ab0 !important;
+}
+
+.empty-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  color: #6c7a89;
+  min-height: 400px;
+}
+
+.empty-results p {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.ocr-how-it-works {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  margin-top: 4rem;
+}
+
+.how-title {
+  color: #2b3d4f;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+
+.how-steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.how-step {
+  flex: 1;
+}
+
+.step-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem auto;
+  width: 100%;
+  max-width: 200px; /* Pillar width */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* Square rounded as in image 2 */
+}
+
+/* Matching image 2 set 2 pill backgrounds */
+.text-cyan-bg { 
+  background: #e0faff; 
+  color: #20c997; 
+}
+.text-green-bg { 
+  background: #f0fff4; 
+  color: #28a745; 
+}
+.text-purple-bg { 
+  background: #f8f0ff; 
+  color: #a55eea; 
+}
+
+.how-step h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #1a2a3a;
+  font-weight: 700;
+}
+
+.how-step p {
+  font-size: 0.95rem;
+  color: #5a6d80;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .how-steps {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .how-step {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

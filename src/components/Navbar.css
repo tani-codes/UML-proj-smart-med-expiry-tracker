@@ -1,0 +1,79 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2.5rem;
+  margin: 2rem auto;
+  max-width: 1350px;
+  width: 95%;
+  border-radius: 60px;
+  position: sticky;
+  top: 2rem;
+  z-index: 100;
+  box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1d7293;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2b3d4f;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.nav-btn.active {
+  background: #8dece4; /* Bright cyan pill from image 3 */
+  color: #0b4a45;
+}
+
+.nav-home-only {
+  background: #e8f7fa;
+  color: #2b3d4f;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #f0f4f8;
+  color: #2b3d4f;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: all 0.2s;
+}
+
+.nav-profile:hover {
+  background: #e2e8f0;
+}
+
+.nav-profile.active-profile {
+  background: #8dece4;
+  color: #0b4a45;
+}

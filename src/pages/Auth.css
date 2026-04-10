@@ -1,0 +1,132 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  min-height: 70vh;
+  padding: 2rem;
+}
+
+.auth-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-logo-container {
+  margin-bottom: 1rem;
+}
+
+.auth-brand {
+  font-size: 3.5rem;
+  color: #2b779a;
+  margin-bottom: 0.5rem;
+}
+
+.auth-tagline {
+  font-size: 1.2rem;
+  color: #6c7a89;
+}
+
+.auth-right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-title {
+  font-size: 1.6rem;
+  color: #2b3d4f;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-input {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.auth-input:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #8abbd0;
+  box-shadow: 0 0 0 3px rgba(138, 187, 208, 0.2);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.auth-btn {
+  background: #97ccde; /* Matches the slightly muted blue in image */
+  color: #1a4252;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.auth-btn:hover {
+  background: #84bed4;
+}
+
+.forgot-password {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #3b5068;
+  cursor: pointer;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* Register specific */
+.register-container {
+  max-width: 600px;
+  margin: 2rem calc(50% - 300px);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  color: #2b3d4f;
+  font-weight: 500;
+}
+
+.birthday-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.select-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%232b3d4f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 50%;
+  background-size: 0.65rem auto;
+  cursor: pointer;
+}

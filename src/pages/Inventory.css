@@ -1,0 +1,141 @@
+.inventory-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.add-med-btn {
+  background: #7caec6 !important;
+  color: #1a4252;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.add-med-btn:hover {
+  background: #6a9ab0 !important;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-card {
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: 2.2rem;
+  color: #2b3d4f;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.stat-label {
+  color: #5a6d80;
+  font-size: 0.95rem;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-radius: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .controls-row {
+    flex-direction: column;
+  }
+}
+
+.search-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  width: 100%;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 0.5rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #2b3d4f;
+}
+
+.search-input::placeholder {
+  color: #a0aec0;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  background: transparent;
+  border: none;
+  font-weight: 500;
+  color: #5a6d80;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.empty-state {
+  padding: 6rem 2rem;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.empty-state h2 {
+  color: #1a2a3a;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.text-muted {
+  color: #5a6d80;
+  font-size: 1.15rem;
+}
