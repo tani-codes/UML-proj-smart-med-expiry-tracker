@@ -1,7 +1,9 @@
 import React from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { ShieldCheck, User } from 'lucide-react';
+import { User } from 'lucide-react';
 import './Navbar.css';
+import logo from '../assets/logo.png';
+import logoNavbar from '../assets/logo_navbar.png';
 
 function Navbar() {
   const location = useLocation();
@@ -12,12 +14,8 @@ function Navbar() {
   return (
     <nav className="navbar glass-panel">
       <div className="navbar-brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-        <div className="logo-icon-container">
-           <ShieldCheck size={32} color="#2b779a" strokeWidth={1.5} />
-        </div>
-        <div className="brand-text">
-          <span className="brand-name">MeduExp&reg;</span>
-        </div>
+        <img src={logoNavbar} alt="MeduExp Logo" className="nav-logo-img" />
+        <span className="nav-brand-text">MeduExpo</span>
       </div>
 
       <div className="navbar-links">

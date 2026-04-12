@@ -52,7 +52,22 @@ ul {
   -webkit-backdrop-filter: blur(12px);
   border: var(--glass-border);
   box-shadow: var(--glass-shadow);
-  border-radius: 20px;
+  border-radius: 40px;
+  padding: 4rem; /* Ultra-spacious padding for premium feel */
+}
+
+.page-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #1a2a3a;
+  margin-bottom: 0.8rem;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: #5a6d80;
+  opacity: 0.9;
+  margin-bottom: 4rem; /* More space before content starts */
 }
 
 .text-center {
@@ -75,20 +90,20 @@ ul {
   justify-content: space-between;
 }
 
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 0.75rem; }
-.gap-4 { gap: 1rem; }
-.gap-6 { gap: 1.5rem; }
-.gap-8 { gap: 2rem; }
+.gap-2 { gap: 0.8rem; }
+.gap-3 { gap: 1.2rem; }
+.gap-4 { gap: 1.5rem; }
+.gap-6 { gap: 2.5rem; }
+.gap-8 { gap: 3.5rem; }
 
-.mt-4 { margin-top: 1rem; }
-.mt-8 { margin-top: 2rem; }
-.mt-10 { margin-top: 3rem; }
-.mt-12 { margin-top: 4rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-6 { margin-bottom: 1.5rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mb-16 { margin-bottom: 5rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 3rem; }
+.mt-10 { margin-top: 4rem; }
+.mt-12 { margin-top: 5rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-6 { margin-bottom: 2rem; }
+.mb-8 { margin-bottom: 3.5rem; }
+.mb-16 { margin-bottom: 7rem; }
 
 .btn {
   padding: 0.6rem 1.5rem;
@@ -165,8 +180,8 @@ ul {
 
 .page-content {
   flex: 1;
-  padding: 6rem 2rem 2rem 2rem; /* Increased top padding */
-  max-width: 1400px; /* Matching wider navbar */
+  padding: 4.5rem 2rem 2rem 2rem; /* Reduced top padding for less gap */
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
 }

@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search, BarChart2, Filter, Package, AlertCircle, AlertTriangle, ShieldCheck, Mail, Smartphone, Bell, Clock } from 'lucide-react';
+import { supabase } from '../supabaseClient';
 import './Alert.css';
 
 function AlertPage() {
+  const [counts, setCounts] = useState({
+    expired: 0,
+    soon: 0,
+    safe: 0
+  });
+
+  const [medicines, setMedicines] = useState({
+    expired: [],
+    soon: [],
+    safe: []
+  });
+
   const [toggles, setToggles] = useState({
     email: true,
     push: true,
@@ -12,6 +25,38 @@ function AlertPage() {
     days7: false,
     onExpiry: true
   });
+
+  const getDaysLeft = (date) => {
+    const today = new Date();
+    const expiry = new Date(date);
+    return Math.ceil((expiry - today) / (1000 * 60 * 60 * 24));
+  };
+
+  const fetchMedicines = async () => {
+    const { data, error } = await supabase
+      .from('medicines')
+      .select('*');
+
+    if (!error && data) {
+      let expiredList = [], soonList = [], safeList = [];
+
+      data.forEach((med) => {
+        const days = getDaysLeft(med.expiry_date);
+        med.daysLeft = days; // attach for rendering
+
+        if (days <= 0) expiredList.push(med);
+        else if (days <= 30) soonList.push(med);
+        else safeList.push(med);
+      });
+
+      setCounts({ expired: expiredList.length, soon: soonList.length, safe: safeList.length });
+      setMedicines({ expired: expiredList, soon: soonList, safe: safeList });
+    }
+  };
+
+  useEffect(() => {
+    fetchMedicines();
+  }, []);
 
   const handleToggle = (key) => {
     setToggles(prev => ({ ...prev, [key]: !prev[key] }));
@@ -37,21 +82,21 @@ function AlertPage() {
              <h3>EXPIRED</h3>
              <p>Medicines past expiry date</p>
           </div>
-          <div className="banner-count">1</div>
+          <div className="banner-count">{counts.expired}</div>
         </div>
         <div className="status-banner soon-banner">
           <div className="banner-left">
              <h3>EXPIRING SOON</h3>
              <p>Within 30 days</p>
           </div>
-          <div className="banner-count">2</div>
+          <div className="banner-count">{counts.soon}</div>
         </div>
         <div className="status-banner safe-banner">
           <div className="banner-left">
              <h3>SAFE</h3>
              <p>More than 30 days left</p>
           </div>
-          <div className="banner-count">4</div>
+          <div className="banner-count">{counts.safe}</div>
         </div>
       </div>
 
@@ -77,35 +122,91 @@ function AlertPage() {
       {/* Main Content Area */}
       <div className="alert-content-grid">
         <div className="alert-main-list">
-          <div className="alert-row-card expired-row">
-            <div className="row-icon red-icon"><AlertCircle size={22} /></div>
-            <div className="row-text">
-               <h4>Expired Medicines</h4>
-               <p>These medicines have passed their expiry date - dispose safely</p>
+          <div className="alert-row-card expired-row flex-col-card">
+            <div className="card-header-flex">
+              <div className="row-icon red-icon"><AlertCircle size={22} /></div>
+              <div className="row-text">
+                 <h4>Expired Medicines</h4>
+                 <p>These medicines have passed their expiry date - dispose safely</p>
+              </div>
             </div>
+            {medicines.expired.length > 0 && (
+              <div className="med-alert-list">
+                {medicines.expired.map(med => (
+                  <div key={med.id} className="med-alert-item red-item">
+                     <div className="item-left">
+                        <div className="item-icon text-red-500"><AlertCircle size={16} /></div>
+                        <div className="item-details">
+                           <h5>{med.name}</h5>
+                           <span>Expired on: {med.expiry_date}</span>
+                        </div>
+                     </div>
+                     <div className="item-badge red-badge">{Math.abs(med.daysLeft)} days ago</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="alert-row-card soon-row mt-6">
-            <div className="row-icon yellow-icon"><AlertTriangle size={22} /></div>
-            <div className="row-text">
-               <h4>Expiring Soon</h4>
-               <p>Medicines expiring within the next 30 days</p>
+          <div className="alert-row-card soon-row flex-col-card">
+            <div className="card-header-flex">
+              <div className="row-icon yellow-icon"><AlertTriangle size={22} /></div>
+              <div className="row-text">
+                 <h4>Expiring Soon</h4>
+                 <p>Medicines expiring within the next 30 days</p>
+              </div>
             </div>
+            {medicines.soon.length > 0 && (
+              <div className="med-alert-list">
+                {medicines.soon.map(med => (
+                  <div key={med.id} className="med-alert-item yellow-item">
+                     <div className="item-left">
+                        <div className="item-icon text-yellow-500"><AlertTriangle size={16} /></div>
+                        <div className="item-details">
+                           <h5>{med.name}</h5>
+                           <span>Expires: {med.expiry_date}</span>
+                        </div>
+                     </div>
+                     <div className="item-badge yellow-badge">{med.daysLeft} days left</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="alert-row-card safe-row mt-6">
-            <div className="row-icon green-icon"><ShieldCheck size={22} /></div>
-            <div className="row-text">
-               <h4>Safe Medicines</h4>
-               <p>Medicines with more than 30 days until expiry</p>
+          <div className="alert-row-card safe-row flex-col-card">
+            <div className="card-header-flex">
+              <div className="row-icon green-icon"><ShieldCheck size={22} /></div>
+              <div className="row-text">
+                 <h4>Safe Medicines</h4>
+                 <p>Medicines with more than 30 days until expiry</p>
+              </div>
             </div>
+            {medicines.safe.length > 0 && (
+              <div className="med-alert-list">
+                {medicines.safe.map(med => (
+                  <div key={med.id} className="med-alert-item green-item">
+                     <div className="item-left">
+                        <div className="item-icon text-green-500"><ShieldCheck size={16} /></div>
+                        <div className="item-details">
+                           <h5>{med.name}</h5>
+                           <span>Expires: {med.expiry_date}</span>
+                        </div>
+                     </div>
+                     <div className="item-badge green-badge">{med.daysLeft} days left</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          <div className="alert-row-card default-row mt-6">
-            <div className="row-icon gray-icon"><Bell size={22} /></div>
-            <div className="row-text">
-               <h4>Recent Notifications</h4>
-               <p>Your notification history from the past 30 days</p>
+          <div className="alert-row-card default-row flex-col-card">
+            <div className="card-header-flex">
+              <div className="row-icon gray-icon"><Bell size={22} /></div>
+              <div className="row-text">
+                 <h4>Recent Notifications</h4>
+                 <p>Your notification history from the past 30 days</p>
+              </div>
             </div>
           </div>
         </div>
@@ -116,7 +217,7 @@ function AlertPage() {
             <h3>Notification Settings</h3>
             <p className="sidebar-subtitle">Choose how you want to be notified</p>
             
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon blue-bg"><Mail size={18} /></div>
                 <div>
@@ -127,7 +228,7 @@ function AlertPage() {
               <Toggle active={toggles.email} onClick={() => handleToggle('email')} />
             </div>
 
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon green-bg"><Smartphone size={18} /></div>
                 <div>
@@ -138,7 +239,7 @@ function AlertPage() {
               <Toggle active={toggles.push} onClick={() => handleToggle('push')} />
             </div>
 
-            <div className="setting-item mt-6">
+            <div className="setting-item">
               <div className="setting-left">
                 <div className="setting-icon purple-bg"><Bell size={18} /></div>
                 <div>
@@ -155,16 +256,16 @@ function AlertPage() {
             <h3>Alert Timing</h3>
             <p className="sidebar-subtitle">When to send expiry reminders</p>
             
-            <div className="timing-list mt-6">
-              <div className="timing-item mb-4">
+            <div className="timing-list mt-8">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 30 days before</div>
                 <Toggle active={toggles.days30} onClick={() => handleToggle('days30')} />
               </div>
-              <div className="timing-item mb-4">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 14 days before</div>
                 <Toggle active={toggles.days14} onClick={() => handleToggle('days14')} />
               </div>
-              <div className="timing-item mb-4">
+              <div className="timing-item">
                 <div className="timing-label"><Clock size={16} /> 7 days before</div>
                 <Toggle active={toggles.days7} onClick={() => handleToggle('days7')} />
               </div>

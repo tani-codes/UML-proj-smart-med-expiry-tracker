@@ -16,13 +16,34 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
 }
 
-.brand-text {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #1d7293;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4); /* Frosted/Light match */
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.nav-brand-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1a4252;
+  letter-spacing: -1px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.nav-logo-img {
+  height: 54px;
+  width: auto;
+  mix-blend-mode: multiply; /* Fuses the white into the background blue */
+  filter: contrast(1.1);
+}
+
+.nav-logo-img:hover {
+  transform: scale(1.05); /* Interactive pop */
 }
 
 .navbar-links {
@@ -48,6 +69,20 @@
 .nav-btn.active {
   background: #8dece4; /* Bright cyan pill from image 3 */
   color: #0b4a45;
+}
+
+.big-logo-container {
+  background: rgba(255, 255, 255, 0.5); /* Lighter/frosted background */
+  padding: 1rem;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.auth-big-logo {
+  width: 300px;
+  height: auto;
+  mix-blend-mode: multiply; /* Fuses white image background into the blue container */
 }
 
 .nav-home-only {
