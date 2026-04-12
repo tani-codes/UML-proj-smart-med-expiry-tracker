@@ -14,12 +14,22 @@
   justify-content: center;
 }
 
+.big-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8f4fd; /* Exact desaturated blue matched to your provided swatch */
+  padding: 2rem; /* Even tighter padding */
+  border-radius: 50px;
+  margin-bottom: 0.5rem; /* Minimal gap between logo and text */
+  box-shadow: 0 10px 30px rgba(232, 244, 253, 0.3);
+}
+
 .auth-big-logo {
-  width: 280px;
+  width: 380px; /* Further reduced for a sleek look */
   height: auto;
-  margin-bottom: 3rem;
   mix-blend-mode: multiply;
-  filter: contrast(1.2) brightness(1.1);
+  filter: contrast(1.1) brightness(1.02);
 }
 
 .auth-brand {
@@ -140,4 +150,5 @@
   background-position: right 1rem top 50%;
   background-size: 0.65rem auto;
   cursor: pointer;
+  
 }

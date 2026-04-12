@@ -32,12 +32,16 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: #1a2a3a;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
 }
 
 .section-title-wrap p {
   font-size: 0.95rem;
   color: #5a6d80;
+  margin: 0;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
 }
 
 /* Account Form */
@@ -88,7 +92,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 0;
+  padding: 1.6rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
@@ -97,15 +101,18 @@
 }
 
 .item-info h4 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1a2a3a;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
 }
 
 .item-info p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #5a6d80;
+  margin: 0;
+  line-height: 1.5;
 }
 
 .item-info-with-icon {
@@ -115,10 +122,18 @@
 }
 
 .item-info-with-icon h4 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1a2a3a;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
+}
+
+.item-info-with-icon p {
+  font-size: 0.95rem;
+  color: #5a6d80;
+  margin: 0;
+  line-height: 1.5;
 }
 
 .btn-small-outline {
@@ -258,15 +273,18 @@
 
 .action-text h4 {
   color: #991b1b;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
 }
 
 .action-text p {
   color: #b91c1c;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   opacity: 0.8;
+  margin: 0;
+  line-height: 1.5;
 }
 
 .btn-danger-outline {
@@ -290,7 +308,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 1rem 3rem;
+  padding: 1.2rem 4rem; /* Larger padding */
   border-radius: 50px;
   border: 1px solid #ddd;
   background: white;
@@ -300,6 +318,7 @@
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-top: 6rem; /* Isolated from the Danger Zone */
 }
 
 .sign-out-btn:hover {

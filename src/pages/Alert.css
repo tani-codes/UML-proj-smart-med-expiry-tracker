@@ -224,3 +224,75 @@
   font-weight: 500;
   color: #5a6d80;
 }
+
+/* ADDED STYLES FOR MEDICINE ITEMS */
+.flex-col-card {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.med-alert-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.med-alert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+
+.red-item { border-color: #fca5a5; }
+.yellow-item { border-color: #fde08a; }
+.green-item { border-color: #86efac; }
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-red-500 { color: #ef4444; }
+.text-yellow-500 { color: #eab308; }
+.text-green-500 { color: #22c55e; }
+
+.item-details h5 {
+  margin: 0 0 0.2rem 0;
+  font-size: 0.95rem;
+  color: #1a2a3a;
+  font-weight: 600;
+}
+
+.item-details span {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.item-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+
+.red-badge { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.yellow-badge { background: #fef9c3; color: #a16207; border: 1px solid #fef08a; }
+.green-badge { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }

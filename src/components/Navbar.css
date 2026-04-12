@@ -18,13 +18,28 @@
   align-items: center;
 }
 
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4); /* Frosted/Light match */
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.nav-brand-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1a4252;
+  letter-spacing: -1px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .nav-logo-img {
-  height: 60px; /* Slightly larger icon */
+  height: 54px;
   width: auto;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: contrast(1.1) brightness(1.02);
-  transition: transform 0.3s ease;
+  mix-blend-mode: multiply; /* Fuses the white into the background blue */
+  filter: contrast(1.1);
 }
 
 .nav-logo-img:hover {
@@ -56,12 +71,18 @@
   color: #0b4a45;
 }
 
+.big-logo-container {
+  background: rgba(255, 255, 255, 0.5); /* Lighter/frosted background */
+  padding: 1rem;
+  border-radius: 30px;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
 .auth-big-logo {
-  width: 280px; /* Perfect size for the shield icon */
+  width: 300px;
   height: auto;
-  margin-bottom: 3rem;
-  mix-blend-mode: multiply;
-  filter: contrast(1.2) brightness(1.1);
+  mix-blend-mode: multiply; /* Fuses white image background into the blue container */
 }
 
 .nav-home-only {
