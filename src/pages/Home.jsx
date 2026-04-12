@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Camera, Clock, Trash2, ShieldCheck, Smartphone, TrendingUp, Phone, Mail } from 'lucide-react';
+import { Camera, Clock, Trash2, Smartphone, TrendingUp, Phone, Mail, ShieldCheck } from 'lucide-react';
 import './Home.css';
+import logo from '../assets/logo.png';
+import iconOnly from '../assets/icon_only.png';
 
 function Home() {
   const navigate = useNavigate();
@@ -10,8 +12,8 @@ function Home() {
     <div className="home-container fade-in">
       {/* Hero Section */}
       <section className="hero-section text-center">
-        <div className="shield-bg-watermark">
-          <ShieldCheck size={400} color="rgba(255,255,255,0.2)" strokeWidth={0.5} />
+        <div className="logo-bg-watermark">
+          <img src={iconOnly} alt="MeduExp Icon Background" />
         </div>
         <div className="hero-content">
           <h1 className="hero-title">Your Home Pharmacy, Smarter !</h1>
@@ -20,8 +22,8 @@ function Home() {
             Advanced OCR technology meets smart inventory management. Track expiry dates, reduce waste, and keep your family safe with intelligent medicine monitoring.
           </p>
           <div className="hero-buttons flex justify-center gap-6 mt-8">
-            <button className="btn btn-outline home-auth-btn" onClick={() => navigate('/login')}>SIGN IN</button>
-            <button className="btn btn-outline home-auth-btn" onClick={() => navigate('/register')}>REGISTER</button>
+            <button className="landing-auth-pill" onClick={() => navigate('/login')}>SIGN IN</button>
+            <button className="landing-auth-pill" onClick={() => navigate('/register')}>REGISTER</button>
           </div>
         </div>
       </section>
@@ -80,7 +82,7 @@ function Home() {
       <section className="cta-banner">
         <h2>Ready to Get Started?</h2>
         <p>Join thousands of families who are already managing their medicine smarter</p>
-        <button className="btn btn-primary cta-btn" onClick={() => navigate('/inventory')}>Start Tracking Now !</button>
+        <button className="btn btn-primary cta-btn" onClick={() => navigate('/login')}>Start Now !</button>
       </section>
 
       {/* Footer */}

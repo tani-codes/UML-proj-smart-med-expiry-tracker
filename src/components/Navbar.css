@@ -16,13 +16,19 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
 }
 
-.brand-text {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #1d7293;
+.nav-logo-img {
+  height: 60px; /* Slightly larger icon */
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: contrast(1.1) brightness(1.02);
+  transition: transform 0.3s ease;
+}
+
+.nav-logo-img:hover {
+  transform: scale(1.05); /* Interactive pop */
 }
 
 .navbar-links {
@@ -48,6 +54,14 @@
 .nav-btn.active {
   background: #8dece4; /* Bright cyan pill from image 3 */
   color: #0b4a45;
+}
+
+.auth-big-logo {
+  width: 280px; /* Perfect size for the shield icon */
+  height: auto;
+  margin-bottom: 3rem;
+  mix-blend-mode: multiply;
+  filter: contrast(1.2) brightness(1.1);
 }
 
 .nav-home-only {

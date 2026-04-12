@@ -2,9 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
-  min-height: 70vh;
-  padding: 2rem;
+  gap: 8rem; /* Extremely wide gap for split-screen feel */
+  min-height: 80vh;
+  padding: 4rem;
 }
 
 .auth-left {
@@ -14,19 +14,27 @@
   justify-content: center;
 }
 
-.big-logo-container {
-  margin-bottom: 1rem;
+.auth-big-logo {
+  width: 280px;
+  height: auto;
+  margin-bottom: 3rem;
+  mix-blend-mode: multiply;
+  filter: contrast(1.2) brightness(1.1);
 }
 
 .auth-brand {
-  font-size: 3.5rem;
+  font-size: 4.8rem; /* Larger brand title */
   color: #2b779a;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+  letter-spacing: -2px;
 }
 
 .auth-tagline {
-  font-size: 1.2rem;
-  color: #6c7a89;
+  font-size: 1.35rem;
+  color: #5a6d80;
+  opacity: 0.8;
+  font-weight: 500;
 }
 
 .auth-right {
@@ -37,9 +45,10 @@
 }
 
 .auth-title {
-  font-size: 1.6rem;
-  color: #2b3d4f;
-  margin-bottom: 1.5rem;
+  font-size: 1.3rem; /* Matched to smaller title in image */
+  color: #1a2a3a;
+  margin-bottom: 2rem;
+  font-weight: 600;
 }
 
 .auth-form {
@@ -49,12 +58,14 @@
 }
 
 .auth-input {
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 12px;
-  padding: 1rem;
+  background: rgba(255, 245, 248, 0.7); /* Soft tint from image 3 */
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 1.2rem;
   font-size: 1rem;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-bottom: 0.5rem;
 }
 
 .auth-input:focus {
@@ -68,13 +79,13 @@
 }
 
 .auth-btn {
-  background: #97ccde; /* Matches the slightly muted blue in image */
+  background: #a9d4e4; /* Light blue from image 3 */
   color: #1a4252;
-  padding: 1rem;
-  border-radius: 12px;
+  padding: 1.1rem;
+  border-radius: 40px; /* Pill shape */
   font-size: 1.1rem;
-  font-weight: 500;
-  box-shadow: none;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(169, 212, 228, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 

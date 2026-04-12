@@ -1,17 +1,16 @@
 .profile-container {
-  max-width: 1000px;
   margin: 0 auto;
 }
 
 .welcome-title {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 3.2rem;
+  font-weight: 700;
   color: #1a2a3a;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .welcome-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: #5a6d80;
 }
 
@@ -19,16 +18,15 @@
   background: #97ccde !important;
   color: #1a4252;
   border-radius: 12px;
-  padding: 0.8rem 1.5rem;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  font-weight: 700;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 /* Banner Card */
 .banner-card {
   background: rgba(151, 204, 222, 0.6) !important; /* Blue-ish background */
-  padding: 2.5rem;
-  border-radius: 25px;
+  border-radius: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,30 +37,31 @@
 
 .banner-card:hover {
   background: rgba(151, 204, 222, 0.8) !important;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .banner-content {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .banner-icon {
   background: rgba(255, 255, 255, 0.3);
-  padding: 1rem;
-  border-radius: 15px;
+  padding: 1.5rem;
+  border-radius: 20px;
 }
 
 .banner-text h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
   color: #1a2a3a;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .banner-text p {
   color: #2b3d4f;
-  font-size: 1rem;
+  font-size: 1.15rem;
   opacity: 0.8;
 }
 
@@ -71,41 +70,43 @@
   opacity: 0.7;
 }
 
-/* Stats Grid */
 .profile-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 4rem; /* Increased for better alignment */
+  margin-top: 4rem;
 }
 
 .stat-box {
-  padding: 2.5rem;
-  border-radius: 25px;
+  border-radius: 40px;
   background: rgba(255, 255, 255, 0.4);
+  padding: 4.5rem; /* Massive internal padding */
 }
 
 .stat-title {
-  font-size: 1.25rem;
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #1a2a3a;
 }
 
 .stat-value {
-  font-size: 4rem;
+  font-size: 5.5rem;
   font-weight: 400;
   color: #1a2a3a;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 .stat-desc {
   color: #5a6d80;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 /* List Cards */
 .list-card {
-  padding: 2rem 2.5rem;
-  border-radius: 30px;
+  border-radius: 40px;
   background: rgba(255, 255, 255, 0.3);
+  padding: 3.5rem 4rem; /* Matching the huge spacing theme */
+  margin-top: 2.5rem;
 }
 
 .list-card-content h3 {

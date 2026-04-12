@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShieldCheck } from 'lucide-react';
 import './Auth.css';
+import logo from '../assets/logo.png';
 
 function Login() {
   const navigate = useNavigate();
@@ -10,7 +10,6 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     if(formData.identifier && formData.password) {
-      // Dummy auth
       navigate('/inventory');
     } else {
       alert("Please enter credentials");
@@ -21,25 +20,25 @@ function Login() {
     <div className="auth-container fade-in">
       <div className="auth-left text-center">
         <div className="big-logo-container">
-          <ShieldCheck size={120} color="#2b779a" strokeWidth={1} className="big-shield"/>
+          <img src={logo} alt="MeduExp Logo" className="auth-big-logo" />
         </div>
         <h1 className="auth-brand">MeduExp&reg;</h1>
         <p className="auth-tagline">Smart Medicine Expiry Tracker</p>
       </div>
 
       <div className="auth-right">
-        <h2 className="auth-title">Log into MeduExp</h2>
+        <h2 className="auth-title">Log into MeduExpo</h2>
         <form className="auth-form" onSubmit={handleLogin}>
           <input 
             type="text" 
-            className="glass-input auth-input" 
+            className="auth-input" 
             placeholder="Phone Number, username or email" 
             value={formData.identifier}
             onChange={(e) => setFormData({...formData, identifier: e.target.value})}
           />
           <input 
             type="password" 
-            className="glass-input auth-input" 
+            className="auth-input" 
             placeholder="Password" 
             value={formData.password}
             onChange={(e) => setFormData({...formData, password: e.target.value})}

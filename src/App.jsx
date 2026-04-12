@@ -7,7 +7,8 @@ import Inventory from './pages/Inventory';
 import Scanner from './pages/Scanner';
 import Profile from './pages/Profile';
 import AlertPage from './pages/Alert';
-import { Shop, Settings } from './pages/Placeholders';
+import Settings from './pages/Settings';
+import ShopPage from './pages/Shop';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/scanner" element={<Scanner />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/shop" element={<Shop />} />
+            <Route path="/shop" element={<ShopPage />} />
             <Route path="/alert" element={<AlertPage />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
