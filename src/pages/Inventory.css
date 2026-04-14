@@ -93,8 +93,10 @@
 }
 
 .filter-btn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   font-weight: 500;
   color: #5a6d80;
   display: flex;
@@ -103,11 +105,14 @@
   padding: 0.6rem 1rem;
   border-radius: 8px;
   transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .filter-btn:hover, .filter-btn.active {
-  background: rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.4);
   color: #1a2a3a;
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
 }
 
 .empty-state {

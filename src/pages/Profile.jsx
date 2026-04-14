@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { Plus, Camera, Package, AlertTriangle, ArrowUpRight } from 'lucide-react';
+import { Plus, Camera, Package, AlertTriangle, ArrowUpRight, User } from 'lucide-react';
 import './Profile.css';
+import './Settings.css';
 
 function Profile() {
   const navigate = useNavigate();
@@ -48,26 +49,30 @@ function Profile() {
         </button>
       </div>
 
-     {/* Additional Profile Info */}
-     {user && (
-       <div className="glass-panel p-6 mb-8" style={{borderRadius: '20px', padding: '1.5rem 2rem'}}>
-         <h3 style={{marginTop: 0, marginBottom: '1rem', color: '#1a2a3a'}}>Profile Information</h3>
-         <div style={{display: 'flex', gap: '2rem'}}>
-           <div>
-             <p style={{color: '#5a6d80', fontSize: '0.85rem', marginBottom: '0.2rem'}}>Name</p>
-             <p style={{fontWeight: 600, color: '#1a2a3a', margin: 0}}>{user.user_metadata?.name || 'Not provided'}</p>
-           </div>
-           <div>
-             <p style={{color: '#5a6d80', fontSize: '0.85rem', marginBottom: '0.2rem'}}>Username</p>
-             <p style={{fontWeight: 600, color: '#1a2a3a', margin: 0}}>{user.user_metadata?.username || 'Not provided'}</p>
-           </div>
-           <div>
-             <p style={{color: '#5a6d80', fontSize: '0.85rem', marginBottom: '0.2rem'}}>Email</p>
-             <p style={{fontWeight: 600, color: '#1a2a3a', margin: 0}}>{user.email}</p>
-           </div>
-         </div>
-       </div>
-     )}
+     {/* Account Info matching Settings UI */}
+      <div className="settings-section glass-panel mb-8">
+        <div className="section-head">
+          <div className="section-icon-wrap cyan-bg"><User size={20} /></div>
+          <div className="section-title-wrap">
+            <h3>Account Information</h3>
+            <p>Update your personal details</p>
+          </div>
+        </div>
+        <div className="account-form-grid mt-6">
+          <div className="input-group">
+            <label>Full Name</label>
+            <input type="text" readOnly value={user?.user_metadata?.name || user?.user_metadata?.username || 'TaNi'} className="settings-input" />
+          </div>
+          <div className="input-group">
+            <label>Email Address</label>
+            <input type="email" readOnly value={user?.email || 'tani@gmail.com'} className="settings-input" />
+          </div>
+          <div className="input-group full-width">
+            <label>Phone Number</label>
+            <input type="text" readOnly value={user?.user_metadata?.phone || '8422973044'} className="settings-input" />
+          </div>
+        </div>
+      </div>
 
       {/* Banner Action Card */}
       <div className="banner-card glass-panel" onClick={() => navigate('/scanner')}>

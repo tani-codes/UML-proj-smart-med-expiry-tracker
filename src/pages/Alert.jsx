@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Search, BarChart2, Filter, Package, AlertCircle, AlertTriangle, ShieldCheck, Mail, Smartphone, Bell, Clock } from 'lucide-react';
+import { Search, BarChart2, Filter, Package, AlertCircle, AlertTriangle, ShieldCheck, Mail, Smartphone, Bell, Clock, Send } from 'lucide-react';
 import { supabase } from '../supabaseClient';
 import './Alert.css';
 
@@ -56,10 +56,86 @@ function AlertPage() {
 
   useEffect(() => {
     fetchMedicines();
-  }, []);
+    // Request notification permission early if turned on
+    if (toggles.push && "Notification" in window && Notification.permission !== "denied" && Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+  }, [toggles.push]);
 
   const handleToggle = (key) => {
     setToggles(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleSendAlerts = async () => {
+    if (!toggles.email && !toggles.push) {
+      alert("Please enable at least one notification method (Email or Push).");
+      return;
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return alert("You must be logged in to send alerts.");
+
+    let triggered = false;
+
+    // 1. Browser Push Notifications
+    if (toggles.push) {
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notifications.");
+      } else if (Notification.permission === "granted") {
+        new Notification("Medicine Expiry Alert", {
+          body: `You have ${counts.expired} expired and ${counts.soon} expiring medicines. Please check your inventory!`,
+        });
+        triggered = true;
+      } else if (Notification.permission !== "denied") {
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+          new Notification("Medicine Expiry Alert", {
+            body: `You have ${counts.expired} expired and ${counts.soon} expiring medicines.`,
+          });
+          triggered = true;
+        }
+      }
+    }
+
+    // 2. Actual Email Notifications (Using Free FormSubmit API)
+    if (toggles.email) {
+      const expiredList = medicines.expired.map(m => `- ${m.name} (Expired on: ${m.expiry_date})`).join('\n') || "None";
+      const soonList = medicines.soon.map(m => `- ${m.name} (Expires on: ${m.expiry_date})`).join('\n') || "None";
+
+      try {
+        const res = await fetch(`https://formsubmit.co/ajax/${user.email}`, {
+          method: "POST",
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: "⚠️ Smart Medicine Expiry Alert!",
+            "Message": "Hello! Here is your medicine expiry report from SmartTracker:",
+            "EXPIRED MEDICINES": expiredList,
+            "EXPIRING SOON": soonList,
+            _template: "box"
+          })
+        });
+
+        const data = await res.json();
+        
+        if (data.success) {
+            alert(`✅ ACTUAL EMAIL SENT to ${user.email}!\n\n(IMPORTANT: If this is your first time, FormSubmit will send an 'Action Required' activation email. You MUST click 'Activate' in that email to receive the report!)`);
+            triggered = true;
+        } else {
+            alert("Failed to send email: " + data.message);
+        }
+
+      } catch (err) {
+        console.error("Email error:", err);
+        alert("Failed to send email. Check console.");
+      }
+    }
+
+    if (triggered && toggles.inApp) {
+       // Future mock logic for in app if needed
+    }
   };
 
   const Toggle = ({ active, onClick }) => (
@@ -70,9 +146,18 @@ function AlertPage() {
 
   return (
     <div className="alert-page-container fade-in">
-      <div className="alert-header mb-8">
-        <h1 className="page-title">Alerts</h1>
-        <p className="page-subtitle">Manage your notification preferences and alert settings</p>
+      <div className="alert-header mb-8 flex justify-between" style={{ alignItems: 'center' }}>
+        <div>
+          <h1 className="page-title" style={{ marginTop: 0 }}>Alerts</h1>
+          <p className="page-subtitle" style={{ marginBottom: 0 }}>Manage your notification preferences and alert settings</p>
+        </div>
+        <button 
+          className="btn btn-primary" 
+          onClick={handleSendAlerts}
+          style={{ padding: '0.8rem 1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#eab308' }}
+        >
+          <Send size={18} /> Test Alerts Now
+        </button>
       </div>
 
       {/* Top Banner Row */}

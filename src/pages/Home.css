@@ -68,20 +68,23 @@
 .landing-auth-pill {
   padding: 1.4rem 4rem;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 30px rgba(31, 38, 135, 0.05);
   border-radius: 80px;
   color: #1a2a3a;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   font-size: 1.1rem;
   letter-spacing: 1px;
+  transition: all 0.3s ease;
 }
 
 .landing-auth-pill:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(255,255,255,0.2);
+  box-shadow: 0 15px 40px rgba(31, 38, 135, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 
@@ -181,16 +184,22 @@
 }
 
 .cta-btn {
-  background: #97ccde;
+  background: rgba(151, 204, 222, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #1a4252;
   padding: 0.8rem 2.5rem;
   font-weight: 600;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 15px rgba(31, 38, 135, 0.05);
+  transition: all 0.3s ease;
 }
 .cta-btn:hover {
-  background: #84bed4;
+  background: rgba(151, 204, 222, 0.6);
   transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 20px rgba(31, 38, 135, 0.1);
 }
 
 .footer {
