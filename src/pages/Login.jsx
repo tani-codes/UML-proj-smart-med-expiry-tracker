@@ -17,8 +17,13 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!formData.identifier || !formData.password) {
-      alert("Please enter credentials");
+    if (!formData.identifier) {
+      alert("Invalid email id or username, enter again");
+      return;
+    }
+
+    if (!formData.password) {
+      alert("Invalid password, enter again");
       return;
     }
 
@@ -31,7 +36,11 @@ function Login() {
       });
 
       if (error) {
-        alert(error.message);
+        if (error.message.toLowerCase().includes('credential')) {
+           alert("Invalid email id or password, enter again");
+        } else {
+           alert(error.message);
+        }
         setLoading(false);
         return;
       }
@@ -40,7 +49,7 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(data.user));
 
       // ✅ Navigate after login
-      navigate('/inventory');
+      navigate('/profile');
 
     } catch (err) {
       console.log(err);
@@ -65,9 +74,9 @@ function Login() {
 
         <form className="auth-form" onSubmit={handleLogin}>
           <input
-            type="email"
+            type="text"
             className="auth-input"
-            placeholder="Enter email"
+            placeholder="Enter email or username"
             value={formData.identifier}
             onChange={(e) =>
               setFormData({ ...formData, identifier: e.target.value })
