@@ -121,25 +121,34 @@ ul {
 }
 
 .btn-primary {
-  background: var(--secondary-color);
-  color: white;
-  box-shadow: 0 4px 15px rgba(122, 179, 203, 0.4);
+  background: rgba(122, 179, 203, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--text-main);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 }
 
 .btn-primary:hover {
-  background: #62a3bd;
-  box-shadow: 0 6px 20px rgba(122, 179, 203, 0.5);
-  transform: translateY(-1px);
+  background: rgba(122, 179, 203, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid #7ab3cb;
-  color: #2b779a;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .glass-input {

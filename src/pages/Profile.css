@@ -15,12 +15,21 @@
 }
 
 .add-med-btn-profile {
-  background: #97ccde !important;
+  background: rgba(151, 204, 222, 0.4) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   color: #1a4252;
   border-radius: 12px;
   padding: 1rem 2rem;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(31, 38, 135, 0.05);
+  transition: all 0.3s ease;
+}
+.add-med-btn-profile:hover {
+  background: rgba(151, 204, 222, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
 }
 
 /* Banner Card */
@@ -121,18 +130,22 @@
 }
 
 .btn-outline-list {
-  background: transparent;
-  border: 1px solid #7ab3cb;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: #2b779a;
   padding: 0.6rem 1.2rem;
   border-radius: 10px;
   font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .btn-outline-list:hover {
-  background: rgba(122, 179, 203, 0.1);
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {

@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../supabaseClient';
 import { User, Lock, Bell, Database, HelpCircle, Trash2, LogOut, ChevronRight, Mail, Phone, Fingerprint, Shield, Smartphone } from 'lucide-react';
 import './Settings.css';
 
 function Settings() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [toggles, setToggles] = useState({
     twoFactor: false,
     biometric: false,
@@ -12,8 +17,31 @@ function Settings() {
     backup: true
   });
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      const currentUser = data?.user;
+      if (currentUser) {
+        setUser(currentUser);
+        setFormData({
+          name: currentUser.user_metadata?.name || currentUser.user_metadata?.username || '',
+          email: currentUser.email || '',
+          phone: currentUser.user_metadata?.phone || ''
+        });
+      } else {
+        navigate('/login');
+      }
+    };
+    fetchUser();
+  }, [navigate]);
+
   const handleToggle = (key) => {
     setToggles(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    navigate('/login');
   };
 
   const Toggle = ({ active, onClick }) => (
@@ -41,15 +69,30 @@ function Settings() {
         <div className="account-form-grid mt-6">
           <div className="input-group">
             <label>Full Name</label>
-            <input type="text" defaultValue="Tanish" className="settings-input" />
+            <input 
+              type="text" 
+              value={formData.name} 
+              onChange={(e) => setFormData({...formData, name: e.target.value})} 
+              className="settings-input" 
+            />
           </div>
           <div className="input-group">
             <label>Email Address</label>
-            <input type="email" defaultValue="tanish@gmail.com" className="settings-input" />
+            <input 
+              type="email" 
+              value={formData.email} 
+              readOnly 
+              className="settings-input" 
+            />
           </div>
           <div className="input-group full-width">
             <label>Phone Number</label>
-            <input type="text" defaultValue="8422973044" className="settings-input" />
+            <input 
+              type="text" 
+              value={formData.phone} 
+              onChange={(e) => setFormData({...formData, phone: e.target.value})} 
+              className="settings-input" 
+            />
           </div>
         </div>
       </div>
@@ -212,7 +255,7 @@ function Settings() {
 
       {/* Sign Out */}
       <div className="flex justify-center mb-10">
-        <button className="sign-out-btn">
+        <button className="sign-out-btn" onClick={handleSignOut}>
           <LogOut size={20} /> Sign Out
         </button>
       </div>

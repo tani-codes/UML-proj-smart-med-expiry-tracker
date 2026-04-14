@@ -117,11 +117,13 @@
 }
 
 .choose-btn {
-  background: rgba(230, 235, 240, 1);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 0.6rem 1.2rem;
   font-weight: 500;
   color: #2b3d4f;
-  border-right: 1px solid rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .file-name {
@@ -139,14 +141,22 @@
   padding: 1.2rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background: #7caec6 !important;
-  color: white;
+  background: rgba(124, 174, 198, 0.4) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #1a3c4f;
   border-radius: 15px;
   margin-top: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  transition: all 0.3s ease;
 }
 
 .start-scan-btn:hover {
-  background: #6a9ab0 !important;
+  background: rgba(124, 174, 198, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transform: translateY(-2px);
 }
 
 .empty-results {

@@ -89,18 +89,24 @@
 }
 
 .auth-btn {
-  background: #a9d4e4; /* Light blue from image 3 */
+  background: rgba(169, 212, 228, 0.5); /* Light blue glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #1a4252;
   padding: 1.1rem;
   border-radius: 40px; /* Pill shape */
   font-size: 1.1rem;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(169, 212, 228, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 20px rgba(31, 38, 135, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
 }
 
 .auth-btn:hover {
-  background: #84bed4;
+  background: rgba(169, 212, 228, 0.7);
+  box-shadow: 0 6px 20px rgba(31, 38, 135, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .forgot-password {

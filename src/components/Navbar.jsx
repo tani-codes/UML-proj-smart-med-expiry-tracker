@@ -15,7 +15,7 @@ function Navbar() {
     <nav className="navbar glass-panel">
       <div className="navbar-brand" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
         <img src={logoNavbar} alt="MeduExp Logo" className="nav-logo-img" />
-        <span className="nav-brand-text">MeduExpo</span>
+        <span className="nav-brand-text">MeduExp</span>
       </div>
 
       <div className="navbar-links">

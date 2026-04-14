@@ -7,6 +7,7 @@ function Inventory() {
 
   const [medicines, setMedicines] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('expiry');
 
@@ -44,28 +45,79 @@ function Inventory() {
     getMedicines();
   }, []);
 
-  // 🔹 ADD
-  const addMedicine = async () => {
+  // 🔹 RESET FORM
+  const resetForm = () => {
+    setShowForm(false);
+    setEditingId(null);
+    setForm({ name: '', expiry_date: '', quantity: '', category: 'Tablet', location: '', ocr_verified: false });
+    getMedicines();
+  };
+
+  // 🔹 SAVE/UPDATE
+  const saveMedicine = async () => {
     const user = (await supabase.auth.getUser()).data.user;
 
     if (!user) return alert("Login required");
 
+    if (!form.name || !form.expiry_date || !form.quantity) {
+      return alert("Fill required fields: Name, Expiry Date, Quantity");
+    }
+
+    const medData = {
+      name: form.name,
+      expiry_date: form.expiry_date,
+      quantity: parseInt(form.quantity),
+      category: form.category,
+      location: form.location,
+      ocr_verified: form.ocr_verified,
+      user_id: user.id
+    };
+
+    if (editingId) {
+      const { error } = await supabase
+        .from('medicines')
+        .update(medData)
+        .eq('id', editingId);
+
+      if (error) alert("Error updating: " + error.message);
+      else resetForm();
+    } else {
+      const { error } = await supabase
+        .from('medicines')
+        .insert([medData]);
+
+      if (error) alert("Error adding: " + error.message);
+      else resetForm();
+    }
+  };
+
+  // 🔹 EDIT
+  const handleEdit = (med) => {
+    setForm({
+      name: med.name || '',
+      expiry_date: med.expiry_date || '',
+      quantity: med.quantity || '',
+      category: med.category || 'Tablet',
+      location: med.location || '',
+      ocr_verified: med.ocr_verified || false
+    });
+    setEditingId(med.id);
+    setShowForm(!showForm ? true : true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // 🔹 DELETE
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this medicine?")) return;
+
     const { error } = await supabase
       .from('medicines')
-      .insert([{
-        name: form.name,
-        expiry_date: form.expiry_date,
-        quantity: parseInt(form.quantity),
-        category: form.category,
-        location: form.location,
-        ocr_verified: form.ocr_verified,
-        user_id: user.id
-      }]);
+      .delete()
+      .eq('id', id);
 
-    if (error) alert(error.message);
-    else {
-      setShowForm(false);
-      setForm({ name: '', expiry_date: '', quantity: '', category: 'Tablet', location: '', ocr_verified: false });
+    if (error) {
+      alert("Error deleting: " + error.message);
+    } else {
       getMedicines();
     }
   };
@@ -100,9 +152,16 @@ function Inventory() {
 
         <button
           className="btn btn-primary"
-          onClick={() => setShowForm(!showForm)}
+          onClick={() => {
+            if (showForm && !editingId) {
+              resetForm();
+            } else {
+              resetForm();
+              setShowForm(true);
+            }
+          }}
         >
-          <Plus size={18} /> Add Medicine
+          {showForm && !editingId ? "Cancel" : <><Plus size={18} /> Add Medicine</>}
         </button>
       </div>
 
@@ -129,7 +188,7 @@ function Inventory() {
       {/* FORM */}
       {showForm && (
         <div className="glass-panel add-med-form p-6 mb-6">
-          <h3 className="mb-4">Add New Medicine</h3>
+          <h3 className="mb-4">{editingId ? "Edit Medicine" : "Add New Medicine"}</h3>
           <div className="form-grid">
             <div className="form-group">
               <label>Medicine Name</label>
@@ -199,7 +258,14 @@ function Inventory() {
             </div>
 
             <div className="form-group" style={{ paddingTop: '1.8rem' }}>
-              <button className="btn btn-primary add-submit-btn" onClick={addMedicine}>Save Medicine</button>
+              <button className="btn btn-primary add-submit-btn" onClick={saveMedicine}>
+                {editingId ? "Update Medicine" : "Save Medicine"}
+              </button>
+              {editingId && (
+                <button className="btn btn-outline ml-2" onClick={resetForm} style={{ marginLeft: '1rem', padding: '0.6rem 1.5rem', borderRadius: '50px' }}>
+                  Cancel
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -282,8 +348,8 @@ function Inventory() {
                   <div className="med-card-header">
                     <h3 className="med-name">{med.name}</h3>
                     <div className="med-actions">
-                      <Edit className="action-icon edit-icon" size={22} />
-                      <Trash2 className="action-icon trash-icon" size={22} />
+                      <Edit className="action-icon edit-icon" size={22} onClick={() => handleEdit(med)} style={{ cursor: 'pointer' }} />
+                      <Trash2 className="action-icon trash-icon" size={22} onClick={() => handleDelete(med.id)} style={{ cursor: 'pointer' }} />
                     </div>
                   </div>
                   
