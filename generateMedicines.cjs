@@ -8,7 +8,7 @@ if (!fs.existsSync(targetDir)){
 
 const baseNames = ['Paracetamol', 'Amoxicillin', 'Ibuprofen', 'Cetirizine', 'Pantoprazole', 'Metformin', 'Amlodipine', 'Omeprazole', 'Azithromycin', 'Diclofenac', 'Levocetirizine', 'Rabeprazole', 'Telmisartan', 'Losartan', 'Atorvastatin', 'Rosuvastatin', 'Glimepiride', 'Ondansetron', 'Domperidone', 'Ranitidine', 'Aspirin', 'Clopidogrel', 'Ciprofloxacin', 'Cefixime', 'Doxycycline', 'Metronidazole', 'Pregabalin', 'Gabapentin', 'Tramadol', 'Vitamin D3', 'Vitamin C', 'B-Complex', 'Calcium', 'Iron', 'Zinc', 'Magnesium', 'Levothyroxine', 'Montelukast', 'Salbutamol', 'Budesonide', 'Fexofenadine', 'Hydroxyzine', 'Fluconazole', 'Ketoconazole', 'Luliconazole', 'Clotrimazole', 'Mometasone', 'Clobetasol', 'Betamethasone', 'Diclofenac Gel', 'Lidocaine'];
 const brands = ['Cipla', 'Sun Pharma', 'Dr. Reddy', 'Lupin', 'Alkem', 'Torrent', 'Mankind', 'Abbott', 'GSK', 'Pfizer', 'Novartis', 'Sanofi', 'AstraZeneca', 'Zydus', 'Glenmark', 'Intas', 'Macleods', 'Aristo', 'Micro Labs', 'Wockhardt'];
-const formulas = ['Tablet', 'Capsule', 'Syrup', 'Injection', 'Ointment', 'Drops'];
+const formulas = ['Tablet', 'Capsule', 'Syrup', 'Injection', 'Ointment', 'Drops', 'Liquid', 'Powder'];
 const doses = ['50mg', '100mg', '200mg', '250mg', '400mg', '500mg', '600mg', '650mg', '1000mg'];
 const pharmacies = ['PharmEasy', '1mg (Tata 1mg)', 'Apollo Pharmacy', 'Netmeds'];
 
@@ -59,7 +59,7 @@ medicines.push({
   ]
 });
 
-while (medicines.length < 1000) {
+while (medicines.length < 500) {
   const base = baseNames[Math.floor(Math.random() * baseNames.length)];
   const brand = brands[Math.floor(Math.random() * brands.length)];
   const form = formulas[Math.floor(Math.random() * formulas.length)];
@@ -99,4 +99,4 @@ while (medicines.length < 1000) {
 }
 
 fs.writeFileSync(path.join(targetDir, 'medicinesDb.json'), JSON.stringify(medicines, null, 2));
-console.log('1000 Medicines Generated!');
+console.log('500 Medicines Generated!');
