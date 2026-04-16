@@ -5,6 +5,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import UpdatePassword from './pages/UpdatePassword';
 import Inventory from './pages/Inventory';
 import Scanner from './pages/Scanner';
 import Profile from './pages/Profile';
@@ -17,9 +19,8 @@ function App() {
     <Router>
       <div className="app-container">
 
-        {/* Navbar hidden on login/register */}
-        {window.location.pathname !== '/login' &&
-         window.location.pathname !== '/register' && <Navbar />}
+        {/* Navbar hidden on auth pages */}
+        {!['/login', '/register', '/forgot-password', '/update-password'].includes(window.location.pathname) && <Navbar />}
 
         <div className="page-content fade-in">
 
@@ -29,6 +30,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/update-password" element={<UpdatePassword />} />
 
             {/* 🔒 PROTECTED ROUTES */}
 
