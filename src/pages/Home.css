@@ -247,3 +247,62 @@
   color: #3b5068;
   font-size: 0.95rem;
 }
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    gap: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  .hero-section {
+    padding: 6rem 1rem 3rem 1rem;
+    min-height: 60vh;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .landing-auth-pill {
+    padding: 1rem 3rem;
+    font-size: 1rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .why-choose, .cta-banner, .footer {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
