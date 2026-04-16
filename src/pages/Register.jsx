@@ -36,8 +36,25 @@ function Register() {
     console.log("REGISTER CLICKED");
     console.log("FORM DATA:", formData);
 
-    if (!formData.email || !formData.password) {
-      alert("Email & password required");
+    if (!formData.email || !formData.password || !formData.month || !formData.day || !formData.year || !formData.name || !formData.username) {
+      alert("All fields are required!");
+      return;
+    }
+
+    if (!formData.email.includes('@')) {
+      alert("Please include an '@' in your email address.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Invalid email id, it must contain a proper domain.");
+      return;
+    }
+
+    const usernameRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).+$/;
+    if (!usernameRegex.test(formData.username)) {
+      alert("Username must contain at least one capital letter and one special character (e.g., @).");
       return;
     }
 
@@ -66,12 +83,12 @@ function Register() {
       return;
     }
 
-    alert("Signup successful ✅");
+    alert("Account created!");
 
     setLoading(false);
 
-    // redirect to login
-    navigate('/login');
+    // redirect to profile
+    navigate('/profile');
   };
 
   return (
