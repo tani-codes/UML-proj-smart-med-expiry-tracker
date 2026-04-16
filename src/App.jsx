@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -14,17 +14,19 @@ import AlertPage from './pages/Alert';
 import Settings from './pages/Settings';
 import ShopPage from './pages/Shop';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideNavbar = ['/login', '/register', '/forgot-password', '/update-password'].includes(location.pathname);
+
   return (
-    <Router>
-      <div className="app-container">
+    <div className="app-container">
 
-        {/* Navbar hidden on auth pages */}
-        {!['/login', '/register', '/forgot-password', '/update-password'].includes(window.location.pathname) && <Navbar />}
+      {/* Navbar hidden on auth pages */}
+      {!hideNavbar && <Navbar />}
 
-        <div className="page-content fade-in">
+      <div className="page-content fade-in">
 
-          <Routes>
+        <Routes>
 
             {/* PUBLIC ROUTES */}
             <Route path="/" element={<Home />} />
@@ -91,8 +93,15 @@ function App() {
 
           </Routes>
 
-        </div>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

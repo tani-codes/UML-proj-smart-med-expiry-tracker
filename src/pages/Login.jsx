@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient'; // IMPORTANT
 import './Auth.css';
 import logo from '../assets/logo_navbar.png';
@@ -102,12 +102,13 @@ function Login() {
           </button>
         </form>
 
-        <p 
+        <Link 
+          to="/forgot-password" 
           className="forgot-password text-center w-100" 
-          onClick={() => navigate('/forgot-password')}
+          style={{ display: 'block', textDecoration: 'none', padding: '0.5rem' }}
         >
           Forgot Password?
-        </p>
+        </Link>
 
         <button
           className="btn btn-primary btn-block auth-btn mt-4"
