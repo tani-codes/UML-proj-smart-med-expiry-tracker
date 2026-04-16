@@ -161,32 +161,44 @@
 @media (max-width: 900px) {
   .auth-container {
     flex-direction: column;
-    gap: 3rem;
-    padding: 2rem 1rem;
+    gap: 1.5rem;
+    padding: 1rem;
   }
   
   .register-container {
-    margin: 2rem auto;
-    padding: 0 1.5rem;
+    margin: 1rem auto;
+    padding: 0 1rem;
     width: 100%;
   }
 
   .auth-brand {
-    font-size: 3.5rem;
+    font-size: 2.2rem;
   }
   
   .auth-big-logo {
-    width: 280px;
+    width: 150px;
+  }
+  
+  .big-logo-container {
+    padding: 1rem;
+    border-radius: 20px;
+    margin-bottom: 0px;
+  }
+  
+  .auth-title {
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   .auth-brand {
-    font-size: 2.8rem;
+    font-size: 2rem;
   }
   
   .auth-big-logo {
-    width: 200px;
+    width: 120px;
   }
   
   .birthday-row {
