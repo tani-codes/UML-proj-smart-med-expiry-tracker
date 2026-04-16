@@ -83,7 +83,7 @@ function Register() {
       return;
     }
 
-    alert("Signup successful ✅");
+    alert("Account created!");
 
     setLoading(false);
 
