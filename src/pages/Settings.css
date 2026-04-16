@@ -346,4 +346,24 @@
   .full-width {
     grid-column: span 1;
   }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .settings-section {
+    padding: 2rem;
+  }
+  .settings-item-row, .danger-action-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .btn-danger-outline {
+    width: 100%;
+  }
+  .sign-out-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

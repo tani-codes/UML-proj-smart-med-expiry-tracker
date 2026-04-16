@@ -151,5 +151,28 @@
 @media (max-width: 768px) {
   .profile-stats-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .banner-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  .banner-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .banner-arrow {
+    display: none;
+  }
+  .stat-box {
+    padding: 2rem;
+  }
+  .list-card {
+    padding: 2rem;
+  }
+  .stat-value {
+    font-size: 4rem;
   }
 }

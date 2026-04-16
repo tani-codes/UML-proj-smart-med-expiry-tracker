@@ -214,4 +214,17 @@
   .price-info {
     margin-right: 0;
   }
+  .search-bar-wrap {
+    flex-direction: column;
+  }
+  .shop-search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .comparison-section {
+    padding: 2rem;
+  }
+  .med-header h3 {
+    font-size: 1.8rem;
+  }
 }
