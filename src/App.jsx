@@ -1,10 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import UpdatePassword from './pages/UpdatePassword';
 import Inventory from './pages/Inventory';
 import Scanner from './pages/Scanner';
 import Profile from './pages/Profile';
@@ -12,23 +14,26 @@ import AlertPage from './pages/Alert';
 import Settings from './pages/Settings';
 import ShopPage from './pages/Shop';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const hideNavbar = ['/login', '/register', '/forgot-password', '/update-password'].includes(location.pathname);
+
   return (
-    <Router>
-      <div className="app-container">
+    <div className="app-container">
 
-        {/* Navbar hidden on login/register */}
-        {window.location.pathname !== '/login' &&
-         window.location.pathname !== '/register' && <Navbar />}
+      {/* Navbar hidden on auth pages */}
+      {!hideNavbar && <Navbar />}
 
-        <div className="page-content fade-in">
+      <div className="page-content fade-in">
 
-          <Routes>
+        <Routes>
 
             {/* PUBLIC ROUTES */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/update-password" element={<UpdatePassword />} />
 
             {/* 🔒 PROTECTED ROUTES */}
 
@@ -88,8 +93,15 @@ function App() {
 
           </Routes>
 
-        </div>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
